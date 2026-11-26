@@ -1,10 +1,12 @@
-# Diffusion Model from Scratch
+# Diffusion
 
 A Denoising Diffusion Probabilistic Model (DDPM) built from scratch in PyTorch. We start with 2-D points (a spiral) before images: the mathematics is identical, yet training finishes in minutes on a CPU.
 
 ![Forward process](forward.png)
 
-## How this relates to real AI models
+---
+
+## Relation to AI
 
 Diffusion models are the engine behind the current wave of generative AI:
 
