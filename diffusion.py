@@ -112,7 +112,7 @@ def main():
     for ax, t in zip(axes, ts):
         xt, _ = q_sample(data, torch.full((len(data),), t))
         scatter(ax, xt.numpy(), f"t = {t if t < T - 1 else T}")
-    fig.suptitle("Forward process: a little Gaussian noise at every step")
+    # fig.suptitle("Forward process: a little Gaussian noise at every step")
     fig.tight_layout(); fig.savefig("forward.png", dpi=150)
 
     # --- training: L_simple = E || eps - eps_theta(x_t, t) ||^2 ---

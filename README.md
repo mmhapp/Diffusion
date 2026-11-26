@@ -1,6 +1,6 @@
 # Diffusion
 
-A Denoising Diffusion Probabilistic Model (DDPM) built from scratch in PyTorch. We start with 2-D points (a spiral) before images: the mathematics is identical, yet training finishes in minutes on a CPU.
+A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch. Start with 2-D points (a spiral) before images: the mathematics is identical, yet training finishes in minutes on a CPU. The picture below shows visualisation of ?.
 
 ![Forward process](forward.png)
 
