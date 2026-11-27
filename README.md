@@ -1,10 +1,10 @@
 # Diffusion
 
-A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch on 2D points and a spiral. The mathematics is the same as for images, but training takes minutes on only a central processing unit (CPU). The picture below shows the forward process, where Gaussian noise is added step by step until only pure noise remains.
+A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch on 2D points and a spiral. The mathematics would be the same also for 3D data points. The picture below shows the forward process, where Gaussian noise is added step by step until only pure noise remains.
 
 <div align="center">
   <img src="forward.png" alt="forward" width="50%">
-  
+
   <sub>Figure 1: xxx.</sub>
 </div>
 
