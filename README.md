@@ -1,14 +1,15 @@
 # Diffusion
 
-A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch on 2-D points, a spiral. The mathematics is the same as for images, but training takes minutes on a CPU. The picture below shows the forward process, where Gaussian noise is added step by step until only pure noise remains.
+A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch on 2D points and a spiral. The mathematics is the same as for images, but training takes minutes on only a central processing unit (CPU). The picture below shows the forward process, where Gaussian noise is added step by step until only pure noise remains.
 
-![Forward process](forward.png)
+<img src="forward.png" alt="forward" width="50%">
+<sub>Figure 1: Optimointimenetelmien häviökäyrät (log-asteikko).</sub>
 
 ---
 
 ## Relation to Artificial Intelligence
 
-Diffusion models power much of current generative models, for example Flux as text-to-image, Sora as video, audio and music models, and protein and molecule design. All of them share the idea shown here. Add noise gradually in forward process, train a network to predict it, then reverse the process to generate new samples. Only the network, e.g. U-Net or DiT instead of an MLP, and the data modality differ. When one calls `scheduler.add_noise()` in PyTorch, the function computes the closed-form forward process derived here, turning a clean data point into a noisy one in a single step.
+Diffusion models power much of current generative models, for example text-to-image Flux, video Sora, audio and music models, and protein and molecule design. All of them share the idea shown here – add noise gradually in forward process, train a network to predict it, then reverse the process to generate new samples. Only the network and the data modality differ. When one calls `scheduler.add_noise()` in PyTorch, the function computes the closed-form forward process derived here, turning a clean data point into a noisy one in a single step.
 
 ## Mathematics
 
@@ -73,12 +74,14 @@ python diffusion.py
 
 ## Project
 
+```
 ├── data/               # Benchmark datasets
 ├── Results/            # Output directory for weights and predictions
 ├── fm.py               # Main execution script
 ├── fmloop.py           # Automated experiment runner
 ├── settings.py         # Hyperparameter configurations
 └── statistics.pdf      # Visualisation and analysis
+```
 
 ## References
 
