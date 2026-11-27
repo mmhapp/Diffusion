@@ -34,7 +34,7 @@ or equivalently
 
 $x_t = \sqrt{\bar\alpha_t}\,x_0 + \sqrt{1-\bar\alpha_t}\,\epsilon,\qquad \epsilon \sim \mathcal{N}(0, I)$.
 
-This makes training cheap: there is no need to simulate $t$ steps; a noisy version is obtained in a single line (`q_sample`).
+This makes training cheap: there is no need to simulate $t$ steps; a noisy version is obtained in a single line.
 
 Sanity check: when $\bar\alpha_t \to 0$ the term $\sqrt{\bar\alpha_t}\,x_0$ vanishes and we are left with $\epsilon$. Variance stays 1: $\bar\alpha_t + (1-\bar\alpha_t) = 1$.
 

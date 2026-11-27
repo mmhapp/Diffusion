@@ -7,13 +7,13 @@ Produces: forward.png, loss.png, reverse.png
 
 import argparse
 import math
-
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
+
 
 T = 1000  # number of diffusion steps
 
