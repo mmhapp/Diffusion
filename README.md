@@ -1,6 +1,6 @@
 # Diffusion
 
-A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch. Start with 2-D points (a spiral) before images: the mathematics is identical, yet training finishes in minutes on a CPU. The picture below shows visualisation of the forward process: Gaussian noise is added step by step until the spiral is destroyed and only pure static noise remains.
+A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with PyTorch on 2-D points, a spiral. The mathematics is the same as for images, but training takes minutes on a CPU. The picture below shows the forward process, where Gaussian noise is added step by step until only pure noise remains.
 
 ![Forward process](forward.png)
 
@@ -8,7 +8,7 @@ A Denoising Diffusion Probabilistic Model (DDPM) implemented from scratch with P
 
 ## Relation to Artificial Intelligence
 
-Diffusion models are the engine behind the current wave of generative artificial intelligence (AI), for example, in Flux (text-to-image), Sora (video generation), audio and music models, as well as protein and molecule design. All of them implement the same core idea shown here: gradually add noise (forward process), train a network to predict that noise, then reverse the process to generate new samples. The only differences are the network architecture (e.g. U-Net or DiT instead of a MLP) and the data modality (e.g. pixels, latents, or spectrograms). When one calls `scheduler.add_noise()` in PyTorch, the function computes exactly the closed-form forward process derived in this project: a clean data point is turned into a noisy one in a single step, and the network is then trained to predict the noise that was added.
+Diffusion models power much of current generative models, for example Flux as text-to-image, Sora as video, audio and music models, and protein and molecule design. All of them share the idea shown here. Add noise gradually in forward process, train a network to predict it, then reverse the process to generate new samples. Only the network, e.g. U-Net or DiT instead of an MLP, and the data modality differ. When one calls `scheduler.add_noise()` in PyTorch, the function computes the closed-form forward process derived here, turning a clean data point into a noisy one in a single step.
 
 ## Mathematics
 
@@ -38,7 +38,7 @@ Sanity check: when $\bar\alpha_t \to 0$ the term $\sqrt{\bar\alpha_t}\,x_0$ vani
 
 The reverse process $p_\theta(x_{t-1}\mid x_t)$ is approximated by a Gaussian. Ho et al. showed that it can be parameterised so that the network $\epsilon_\theta(x_t, t)$ predicts the noise that was added to the data point. The simplified training loss is mean-squared error
 
-# $L_\text{simple} = \mathbb{E}_{t,\,x_0,\,\epsilon}\Bigl[\,\bigl\lVert \epsilon - \epsilon_\theta(x_t, t)\bigr\rVert^2\Bigr]$.
+$L_{\text{simple}}=\mathbb{E}_{t{,}x_0{,}\epsilon}\left[\parallel\epsilon-\epsilon_0\left(x_t{,}t\right)\parallel^2\right]$.
 
 The training loop is therefore:
 
@@ -58,7 +58,7 @@ Here $\sigma_t^2 = \beta_t$ and on the final step ($t=1$) no noise is added. Ins
 
 <ins>Why this works</ins>
 
-The mean of the reverse step depends on the *score* function of the data distribution $\nabla_x \log p_t(x)$. Noise prediction is linked to it by
+The mean of the reverse step depends on the score function of the data distribution $\nabla_x \log p_t(x)$. Noise prediction is linked to it by
 
 $\nabla_{x_t}\log q(x_t) \approx -\frac{\epsilon_\theta(x_t,t)}{\sqrt{1-\bar\alpha_t}}$.
 
@@ -70,6 +70,15 @@ The network therefore learns the direction in which a point should move to becom
 pip install -r requirements.txt
 python diffusion.py
 ```
+
+## Project
+
+├── data/               # Benchmark datasets
+├── Results/            # Output directory for weights and predictions
+├── fm.py               # Main execution script
+├── fmloop.py           # Automated experiment runner
+├── settings.py         # Hyperparameter configurations
+└── statistics.pdf      # Visualisation and analysis
 
 ## References
 
